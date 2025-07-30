@@ -76,7 +76,7 @@ int main() {
         cout << "\nSolved Sudoku:\n";
         printGrid(grid);
     } else {
-        cout << "No solution exists.\n";
+        cout << "No solution existed.\n";
     }
 
     return 0;
