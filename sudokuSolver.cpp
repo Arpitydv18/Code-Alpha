@@ -3,7 +3,6 @@ using namespace std;
 
 #define N 9
 
-// Function to print Sudoku grid
 void printGrid(int grid[N][N]) {
     for (int row = 0; row < N; row++) {
         for (int col = 0; col < N; col++) {
@@ -13,19 +12,16 @@ void printGrid(int grid[N][N]) {
     }
 }
 
-// Check if placing num is valid
 bool isSafe(int grid[N][N], int row, int col, int num) {
     // Check row
     for (int x = 0; x < N; x++) {
         if (grid[row][x] == num)
             return false;
     }
-    // Check column
     for (int x = 0; x < N; x++) {
         if (grid[x][col] == num)
             return false;
     }
-    // Check 3x3 subgrid
     int startRow = row - row % 3, startCol = col - col % 3;
     for (int i = 0; i < 3; i++) {
         for (int j = 0; j < 3; j++) {
@@ -36,12 +32,10 @@ bool isSafe(int grid[N][N], int row, int col, int num) {
     return true;
 }
 
-// Backtracking solver
 bool solveSudoku(int grid[N][N]) {
     int row, col;
     bool empty = false;
 
-    // Find empty cell
     for (row = 0; row < N; row++) {
         for (col = 0; col < N; col++) {
             if (grid[row][col] == 0) {
@@ -52,11 +46,9 @@ bool solveSudoku(int grid[N][N]) {
         if (empty) break;
     }
 
-    // No empty cell = solved
     if (!empty)
         return true;
 
-    // Try numbers 1–9
     for (int num = 1; num <= 9; num++) {
         if (isSafe(grid, row, col, num)) {
             grid[row][col] = num;
@@ -64,7 +56,7 @@ bool solveSudoku(int grid[N][N]) {
             if (solveSudoku(grid))
                 return true;
 
-            grid[row][col] = 0; // Backtrack
+            grid[row][col] = 0; 
         }
     }
     return false;

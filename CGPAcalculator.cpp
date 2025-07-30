@@ -1,11 +1,11 @@
 #include <iostream>
 #include <vector>
-#include <iomanip>  // for setprecision
+#include <iomanip>  
 using namespace std;
 
 struct Course {
     string name;
-    double grade;      // Grade points (e.g., 9.0 for A, 8.0 for B)
+    double grade;      
     double creditHours;
 };
 
@@ -30,9 +30,9 @@ int main() {
         totalGradePoints += (courses[i].grade * courses[i].creditHours);
     }
 
-    double GPA = totalGradePoints / totalCredits; // Semester GPA
+    double GPA = totalGradePoints / totalCredits; 
 
-    // Display details
+
     cout << "\n--- Course Details ---\n";
     for (int i = 0; i < numCourses; i++) {
         cout << "Course: " << courses[i].name
@@ -44,7 +44,6 @@ int main() {
     cout << "\nTotal Credits: " << totalCredits << endl;
     cout << "Semester GPA: " << GPA << endl;
 
-    // For CGPA, you can assume multiple semesters if required
     char more;
     double prevCGPA, prevCredits;
     cout << "\nDo you have previous CGPA data? (y/n): ";
